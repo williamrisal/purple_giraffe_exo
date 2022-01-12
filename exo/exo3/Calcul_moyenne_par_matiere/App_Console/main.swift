@@ -21,10 +21,17 @@ func menu() {
             if (userchoix > 3){
                 print("\nMauvaise saisie !\n")
             }
-        } while userchoix != 1 || userchoix != 2
+        } while userchoix < 1 || userchoix > 3
+    switch userchoix {
+    case 1:
+        notesList = saisiNote(notesList: notesList)
+    case 2:
+        displaySummary(notesList: notesList)
+    default:
+        break;
+    }
+} while userchoix != 3
 
-        choix (userChoice: userchoix, notesList: notesList)
-    } while userchoix != 3
     
 }
 menu()
@@ -42,13 +49,8 @@ func choix(userChoice:Int, notesList:[String:[Double]]) {
     case 1:
         notesListTmp = saisiNote(notesList: notesListTmp)
     case 2:
-        for (courseName, courseNotesList) in notesList {
-            print("\(courseName) :")
-            print("Nombre de notes : \(courseNotesList.count)")
-            if let average = average(from: courseNotesList) {
-                print("Moyenne : \(average)")
-            }
-        }
+        print("bonjour")
+        print(notesListTmp)
     default:
         break;
     }
@@ -86,4 +88,12 @@ func average(from array:[Double]) -> Double? {
     return sum / Double(array.count)
 }
 
-
+func displaySummary(notesList:[String:[Double]]) {
+    for (courseName, courseNotesList) in notesList {
+        print("\(courseName) :")
+        print("Nombre de notes : \(courseNotesList.count)")
+        if let average = average(from: courseNotesList) {
+            print("Moyenne : \(average)")
+        }
+    }
+}
