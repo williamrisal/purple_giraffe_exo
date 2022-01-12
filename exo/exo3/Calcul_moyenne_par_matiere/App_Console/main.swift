@@ -43,19 +43,6 @@ func printmenu(){
     print("3 - Quitter")
 }
 
-func choix(userChoice:Int, notesList:[String:[Double]]) {
-    var notesListTmp = notesList
-    switch userChoice {
-    case 1:
-        notesListTmp = saisiNote(notesList: notesListTmp)
-    case 2:
-        print("bonjour")
-        print(notesListTmp)
-    default:
-        break;
-    }
-}
-
 func saisiNote(notesList:[String:[Double]]) -> [String:[Double]] {
     var newNotesList = notesList
     print("Nombre de Note :")
